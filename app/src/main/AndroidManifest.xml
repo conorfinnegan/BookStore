@@ -33,6 +33,14 @@
         <activity
             android:name=".AdminProfileActivity"
             android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddBookActivity"
+            android:label="@string/title_activity_add_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewAllUsers"
+            android:label="@string/title_activity_view_all_users"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView textView;
-    private Button btnLinkToViewEdit;
+    private Button btnLinkToAdd;
     private Button btnLinkToSeach;
     private Button btnLinkToViewAll;
     private Button btnLinkToViewShortList;
@@ -35,7 +35,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
 
         textView.setText("Loged In as: "+username);
 
-//        btnLinkToViewEdit = (Button) findViewById(R.id.VEProfile);
+        btnLinkToAdd = (Button) findViewById(R.id.AddBook);
 //
 //        btnLinkToSeach= (Button) findViewById(R.id.SearchOpp);
 //
@@ -51,7 +51,7 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
 //
 //        btnLinkToViewFixtures = (Button) findViewById(R.id.ViewFixtures);
 //
-//        btnLinkToViewEdit.setOnClickListener(this);
+        btnLinkToAdd.setOnClickListener(this);
 //
 //        btnLinkToSeach.setOnClickListener(this);
 //
@@ -70,11 +70,11 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-//        if(v == btnLinkToViewEdit){
-//            Intent intent = new Intent(ProfileActivity.this,ViewEditActivity.class);
-//            intent.putExtra(USER_NAME, username);
-//            startActivity(intent);
-//        }
+        if(v == btnLinkToAdd){
+            Intent intent = new Intent(AdminProfileActivity.this,AddBookActivity.class);
+            intent.putExtra(USER_NAME, username);
+            startActivity(intent);
+        }
 //        if(v == btnLinkToSeach){
 //            Intent intent = new Intent(ProfileActivity.this,SearchInterfaceActivity.class);
 //            intent.putExtra("logged_in_username", username);

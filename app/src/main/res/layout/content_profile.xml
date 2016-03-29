@@ -21,25 +21,25 @@
             android:id="@+id/textViewUserName"
             android:layout_gravity="center_horizontal" />
 
-        <!--<TableRow-->
-            <!--android:id="@+id/tableRow1"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:height="140dp">-->
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:height="140dp">
 
-            <!--<Button-->
-                <!--android:id="@+id/VEProfile"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="View/Edit Profile"-->
-                <!--android:height="120dp"/>-->
+            <Button
+                android:id="@+id/AddBook"
+                android:layout_weight="1"
+                android:text="Add A Book"
+                android:height="120dp"/>
 
-            <!--<Button-->
-                <!--android:id="@+id/SearchOpp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="Search Opponents"-->
-                <!--android:height="120dp"/>-->
-        <!--</TableRow>-->
+            <Button
+                android:id="@+id/EditBook"
+                android:layout_weight="1"
+                android:text="Edit A Book"
+                android:height="120dp"/>
+        </TableRow>
 
         <!--<TableRow-->
             <!--android:id="@+id/tableRow2"-->
