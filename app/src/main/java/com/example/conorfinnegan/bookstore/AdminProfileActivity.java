@@ -77,7 +77,6 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         }
         if(v == btnLinkToViewAll){
             Intent intent = new Intent(AdminProfileActivity.this,ViewAllBooks.class);
-            intent.putExtra("logged_in_username", username);
             startActivity(intent);
         }
 //        if(v == btnLinkToViewAll){

@@ -99,7 +99,7 @@ public class ViewAllBooks extends AppCompatActivity {
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject c = result.getJSONObject(i);
-                String id = "ID: " + c.getString(KEY_ID);
+                String id = c.getString(KEY_ID);
                 String title = "Title: " + c.getString(KEY_TITLE);
                 String author = "Author: " + c.getString(KEY_AUTHOR);
                 String genre = "Genre: " + c.getString(KEY_GENRE);
@@ -129,13 +129,10 @@ public class ViewAllBooks extends AppCompatActivity {
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     Map<String, String> map = userList.get(position);
-                    String book_title = map.get(KEY_TITLE);
-                    Intent intent = getIntent();
-
-                    String logged_in_username = intent.getStringExtra(AdminProfileActivity.USER_NAME);
+                    String bookId = map.get(KEY_ID);
 
                     Intent myIntent = new Intent(ViewAllBooks.this, ViewBook.class);
-                    myIntent.putExtra("book_title", book_title);
+                    myIntent.putExtra("book_id", bookId);
                     startActivity(myIntent);
                 }
             });

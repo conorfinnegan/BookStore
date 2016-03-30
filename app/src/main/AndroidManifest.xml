@@ -39,7 +39,7 @@
             android:label="@string/title_activity_add_book"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ViewAllUsers"
+            android:name=".ViewAllBooks"
             android:label="@string/title_activity_view_all_users"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
