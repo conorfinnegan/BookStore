@@ -35,9 +35,9 @@
                 android:height="120dp"/>
 
             <Button
-                android:id="@+id/EditBook"
+                android:id="@+id/ViewAllBooks"
                 android:layout_weight="1"
-                android:text="Edit A Book"
+                android:text="View All Book"
                 android:height="120dp"/>
         </TableRow>
 

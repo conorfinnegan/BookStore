@@ -5,4 +5,5 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_add_book">AddBookActivity</string>
     <string name="title_activity_view_all_users">ViewAllUsers</string>
+    <string name="title_activity_view_book">ViewBook</string>
 </resources>

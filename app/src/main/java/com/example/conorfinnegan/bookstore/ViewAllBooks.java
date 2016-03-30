@@ -2,7 +2,6 @@ package com.example.conorfinnegan.bookstore;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -19,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -31,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ViewAllUsers extends AppCompatActivity {
+public class ViewAllBooks extends AppCompatActivity {
 
     String myJSON;
 
@@ -41,18 +39,16 @@ public class ViewAllUsers extends AppCompatActivity {
 
     ListView list;
 
-    public static final String USER_NAME = "USER_NAME";
-    public static final String LOGGED_IN_USER ="LOGGED_IN_USER";
-
     private ProgressDialog loading;
 
-    public static final String DATA_URL = "http://cf000whs.netne.net/fetchAllUsers.php";
-    public static final String KEY_USERNAME = "username";
-    public static final String KEY_TEAMNAME = "team_name";
-    public static final String KEY_SPORT = "sport";
-    public static final String KEY_AGE_GROUP = "age_group";
-    public static final String KEY_LEVEL = "level";
-    public static final String KEY_COUNTY = "county";
+    public static final String DATA_URL = "http://confinn93.x10host.com/cgi-bin/ViewAllUsers.php";
+    public static final String KEY_ID = "id";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_AUTHOR = "author";
+    public static final String KEY_GENRE = "genre";
+    public static final String KEY_PRICE = "price";
+    public static final String KEY_YEAR = "year";
+    public static final String KEY_QUANTITY = "quantity";
     public static final String JSON_ARRAY = "result";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -63,7 +59,7 @@ public class ViewAllUsers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_all);
+        setContentView(R.layout.activity_view_all_users);
         list = (ListView) findViewById(R.id.listView);
         userList = new ArrayList<HashMap<String, String>>();
         getData();
@@ -88,7 +84,7 @@ public class ViewAllUsers extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ViewAllActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(ViewAllBooks.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -103,42 +99,43 @@ public class ViewAllUsers extends AppCompatActivity {
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject c = result.getJSONObject(i);
-                String username = c.getString(KEY_USERNAME);
-                String team_name = "Team Name: " + c.getString(KEY_TEAMNAME);
-                String sport = "Sport: " + c.getString(KEY_SPORT);
-                String age_group = "Age Group: " + c.getString(KEY_AGE_GROUP);
-                String level = "Level: " + c.getString(KEY_LEVEL);
-                String county = "County: " + c.getString(KEY_COUNTY);
+                String id = "ID: " + c.getString(KEY_ID);
+                String title = "Title: " + c.getString(KEY_TITLE);
+                String author = "Author: " + c.getString(KEY_AUTHOR);
+                String genre = "Genre: " + c.getString(KEY_GENRE);
+                String price ="Price: " + c.getString(KEY_PRICE);
+                String year = "Year: " + c.getString(KEY_YEAR);
+                String quantity = "Quantity: " + c.getString(KEY_QUANTITY);
 
                 HashMap<String, String> users = new HashMap<String, String>();
 
-                users.put(KEY_USERNAME, username);
-                users.put(KEY_TEAMNAME, team_name);
-                users.put(KEY_SPORT, sport);
-                users.put(KEY_AGE_GROUP, age_group);
-                users.put(KEY_LEVEL, level);
-                users.put(KEY_COUNTY, county);
+                users.put(KEY_ID, id);
+                users.put(KEY_TITLE, title);
+                users.put(KEY_AUTHOR, author);
+                users.put(KEY_GENRE, genre);
+                users.put(KEY_PRICE, price);
+                users.put(KEY_YEAR, year);
+                users.put(KEY_QUANTITY, quantity);
 
                 userList.add(users);
 
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    ViewAllActivity.this, userList, R.layout.list_item,
-                    new String[]{KEY_TEAMNAME, KEY_SPORT, KEY_AGE_GROUP, KEY_LEVEL, KEY_COUNTY},
-                    new int[]{R.id.team_name, R.id.sport, R.id.age_group, R.id.level, R.id.county});
+                    ViewAllBooks.this, userList, R.layout.list_item,
+                    new String[]{KEY_ID, KEY_TITLE, KEY_AUTHOR, KEY_GENRE, KEY_PRICE, KEY_YEAR, KEY_QUANTITY},
+                    new int[]{R.id.bookID, R.id.title, R.id.author, R.id.genre, R.id.price, R.id.year, R.id.quantity});
 
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     Map<String, String> map = userList.get(position);
-                    String username = map.get(KEY_USERNAME);
+                    String book_title = map.get(KEY_TITLE);
                     Intent intent = getIntent();
 
-                    String logged_in_username = intent.getStringExtra(ProfileActivity.USER_NAME);
+                    String logged_in_username = intent.getStringExtra(AdminProfileActivity.USER_NAME);
 
-                    Intent myIntent = new Intent(ViewAllActivity.this, ViewUser.class);
-                    myIntent.putExtra("username", username);
-                    myIntent.putExtra("logged_in_username", logged_in_username);
+                    Intent myIntent = new Intent(ViewAllBooks.this, ViewBook.class);
+                    myIntent.putExtra("book_title", book_title);
                     startActivity(myIntent);
                 }
             });
@@ -172,43 +169,43 @@ public class ViewAllUsers extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ViewAll Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.conorfinnegan.finalyearproject20/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ViewAll Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.conorfinnegan.finalyearproject20/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        client.connect();
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW, // TODO: choose an action type.
+//                "ViewAll Page", // TODO: Define a title for the content shown.
+//                // TODO: If you have web page content that matches this app activity's content,
+//                // make sure this auto-generated web page URL is correct.
+//                // Otherwise, set the URL to null.
+//                Uri.parse("http://host/path"),
+//                // TODO: Make sure this auto-generated app deep link URI is correct.
+//                Uri.parse("android-app://com.example.conorfinnegan.finalyearproject20/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.start(client, viewAction);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        Action viewAction = Action.newAction(
+//                Action.TYPE_VIEW, // TODO: choose an action type.
+//                "ViewAll Page", // TODO: Define a title for the content shown.
+//                // TODO: If you have web page content that matches this app activity's content,
+//                // make sure this auto-generated web page URL is correct.
+//                // Otherwise, set the URL to null.
+//                Uri.parse("http://host/path"),
+//                // TODO: Make sure this auto-generated app deep link URI is correct.
+//                Uri.parse("android-app://com.example.conorfinnegan.finalyearproject20/http/host/path")
+//        );
+//        AppIndex.AppIndexApi.end(client, viewAction);
+//        client.disconnect();
+//    }
 }

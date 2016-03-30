@@ -41,6 +41,10 @@
         <activity
             android:name=".ViewAllUsers"
             android:label="@string/title_activity_view_all_users"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewBook"
+            android:label="@string/title_activity_view_book"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView textView;
     private Button btnLinkToAdd;
-    private Button btnLinkToSeach;
+    private Button btnLinkToDelete;
     private Button btnLinkToViewAll;
     private Button btnLinkToViewShortList;
     private Button btnLinkToLogout;
@@ -36,8 +36,8 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         textView.setText("Loged In as: "+username);
 
         btnLinkToAdd = (Button) findViewById(R.id.AddBook);
-//
-//        btnLinkToSeach= (Button) findViewById(R.id.SearchOpp);
+
+        btnLinkToViewAll= (Button) findViewById(R.id.ViewAllBooks);
 //
 //        btnLinkToViewAll = (Button) findViewById(R.id.ViewAll);
 //
@@ -52,9 +52,9 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
 //        btnLinkToViewFixtures = (Button) findViewById(R.id.ViewFixtures);
 //
         btnLinkToAdd.setOnClickListener(this);
-//
-//        btnLinkToSeach.setOnClickListener(this);
-//
+
+        btnLinkToViewAll.setOnClickListener(this);
+
 //        btnLinkToViewAll.setOnClickListener(this);
 //
 //        btnLinkToViewShortList.setOnClickListener(this);
@@ -75,11 +75,11 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra(USER_NAME, username);
             startActivity(intent);
         }
-//        if(v == btnLinkToSeach){
-//            Intent intent = new Intent(ProfileActivity.this,SearchInterfaceActivity.class);
-//            intent.putExtra("logged_in_username", username);
-//            startActivity(intent);
-//        }
+        if(v == btnLinkToViewAll){
+            Intent intent = new Intent(AdminProfileActivity.this,ViewAllBooks.class);
+            intent.putExtra("logged_in_username", username);
+            startActivity(intent);
+        }
 //        if(v == btnLinkToViewAll){
 //            Intent intent = new Intent(ProfileActivity.this,ViewAllActivity.class);
 //            intent.putExtra(USER_NAME, username);
