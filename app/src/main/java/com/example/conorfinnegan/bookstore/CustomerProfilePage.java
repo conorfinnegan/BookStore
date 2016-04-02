@@ -76,7 +76,8 @@ public class CustomerProfilePage extends AppCompatActivity implements View.OnCli
             startActivity(intent);
         }
         if(v == btnLinkToViewCart){
-            Intent intent = new Intent(CustomerProfilePage.this,ViewAllBooks.class);
+            Intent intent = new Intent(CustomerProfilePage.this,ViewCart.class);
+            intent.putExtra("username", username);
             startActivity(intent);
         }
 //        if(v == btnLinkToViewAll){
