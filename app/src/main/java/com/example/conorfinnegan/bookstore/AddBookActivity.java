@@ -69,12 +69,13 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
         String price = inputPrice.getText().toString().trim();
         String year = inputYear.getText().toString().trim();
         String quantity = inputQuantity.getText().toString().trim();
+        String reference = title.replaceAll("\\s+","");
 
 
-        register(title, author, genre, price, year, quantity);
+        register(title, author, genre, price, year, quantity, reference);
     }
 
-    private void register(String title, String author, String genre, String price, String year, String quantity) {
+    private void register(String title, String author, String genre, String price, String year, String quantity, String reference) {
         class RegisterUser extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
             RegisterUserClass ruc = new RegisterUserClass();
@@ -103,6 +104,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
                 data.put("price", params[3]);
                 data.put("year", params[4]);
                 data.put("quantity", params[5]);
+                data.put("reference", params[6]);
 
                 String result = ruc.sendPostRequest(REGISTER_URL, data);
 
@@ -111,6 +113,6 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(title, author, genre, price, year, quantity);
+        ru.execute(title, author, genre, price, year, quantity, reference);
     }
 }
