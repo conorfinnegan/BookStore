@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(intent);
                     }
                     else{
-                        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, CustomerProfilePage.class);
                         intent.putExtra("username", username);
                         startActivity(intent);
                     }
