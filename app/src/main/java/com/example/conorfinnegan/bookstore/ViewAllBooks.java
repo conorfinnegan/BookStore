@@ -41,7 +41,7 @@ public class ViewAllBooks extends AppCompatActivity {
 
     private ProgressDialog loading;
 
-    public static final String DATA_URL = "http://confinn93.x10host.com/cgi-bin/ViewAllUsers.php";
+    public static final String DATA_URL = "http://confinn93.x10host.com/cgi-bin/ViewAllBooks.php";
     public static final String KEY_ID = "id";
     public static final String KEY_TITLE = "title";
     public static final String KEY_AUTHOR = "author";
