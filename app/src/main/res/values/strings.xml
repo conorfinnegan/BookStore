@@ -6,4 +6,9 @@
     <string name="title_activity_add_book">AddBookActivity</string>
     <string name="title_activity_view_all_users">ViewAllUsers</string>
     <string name="title_activity_view_book">ViewBook</string>
+    <string name="title_activity_customer_profile_page">CustomerProfilePage</string>
+    <string name="title_activity_customer_search">CustomerSearch</string>
+    <string name="title_activity_search_return">SearchReturnActivity</string>
+    <string name="title_activity_customer_view_book">CustomerViewBook</string>
+    <string name="title_activity_view_cart">ViewCart</string>
 </resources>

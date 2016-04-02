@@ -45,6 +45,26 @@
         <activity
             android:name=".ViewBook"
             android:label="@string/title_activity_view_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerProfilePage"
+            android:label="@string/title_activity_customer_profile_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerSearch"
+            android:label="@string/title_activity_customer_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchReturnActivity"
+            android:label="@string/title_activity_search_return"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerViewBook"
+            android:label="@string/title_activity_customer_view_book"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewCart"
+            android:label="@string/title_activity_view_cart"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
