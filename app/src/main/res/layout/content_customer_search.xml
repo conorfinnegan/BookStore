@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Book Name:"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:windowSoftInputMode="stateHidden"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,5 +31,11 @@
         android:layout_marginTop="20dip"
         android:background="#eceef1"
         android:text="Search" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:id="@+id/listViewSearch" />
 
 </LinearLayout>
