@@ -26,6 +26,51 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private static final String LOGIN_URL = "http://confinn93.x10host.com/cgi-bin/login.php";
 
+    public class LoginCommand {
+        public void adminLogin() {
+            String username = inputUsername.getText().toString().trim();
+            Intent intent = new Intent(LoginActivity.this, AdminProfileActivity.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
+        }
+        public void customerLogin() {
+            String username = inputUsername.getText().toString().trim();
+            Intent intent = new Intent(LoginActivity.this, CustomerProfilePage.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
+        }
+    }
+
+    class ExecuteLoginCustomer implements CommandInterface {
+        private LoginCommand lc;
+        public ExecuteLoginCustomer (LoginCommand L) {
+            lc  =  L;
+        }
+        public void execute( ) {
+            lc.customerLogin();
+        }
+    }
+
+    class ExecuteLoginAdmin implements CommandInterface {
+        private LoginCommand lc;
+        public ExecuteLoginAdmin (LoginCommand L) {
+            lc  =  L;
+        }
+        public void execute( ) {
+            lc.adminLogin();
+        }
+    }
+
+    class CompleteLogin {
+        private CommandInterface correct;
+        public CompleteLogin(CommandInterface Up) {
+            correct = Up; // concrete Command registers itself with the invoker
+        }
+        void DoLogin() { // invoker calls back concrete Command, which executes the Command on the receiver
+            correct.execute() ;
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +118,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loading.dismiss();
                 if(s.equalsIgnoreCase("success")){
                     if(inputUsername.getText().toString().trim().equalsIgnoreCase("admin") && inputPassword.getText().toString().trim().equalsIgnoreCase("admin")) {
-                        Intent intent = new Intent(LoginActivity.this, AdminProfileActivity.class);
-                        intent.putExtra("username", username);
-                        startActivity(intent);
+                        LoginCommand lc = new LoginCommand();
+                        ExecuteLoginAdmin adminLog = new ExecuteLoginAdmin(lc);
+                        CompleteLogin ts = new CompleteLogin(adminLog);
+                        ts.DoLogin();
                     }
-                    else{
-                        Intent intent = new Intent(LoginActivity.this, CustomerProfilePage.class);
-                        intent.putExtra("username", username);
-                        startActivity(intent);
+                    else if(!inputUsername.getText().toString().trim().equalsIgnoreCase("admin") && !inputPassword.getText().toString().trim().equalsIgnoreCase("admin")){
+                        LoginCommand lc = new LoginCommand();
+                        ExecuteLoginCustomer custLog = new ExecuteLoginCustomer(lc);
+                        CompleteLogin ts = new CompleteLogin(custLog);
+                        ts.DoLogin();
                     }
                 }else{
                     Toast.makeText(LoginActivity.this,s,Toast.LENGTH_LONG).show();
