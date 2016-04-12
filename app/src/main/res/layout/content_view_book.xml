@@ -116,9 +116,11 @@
             android:layout_below="@+id/textViewYear"
             android:layout_marginBottom="10dp" />
 
-        <LinearLayout
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:id="@+id/listViewReviews" />
 
             <Button
                 android:layout_width="175dp"
@@ -136,6 +138,32 @@
                 android:id="@+id/deleteButton"
                 android:enabled="true"
                 android:gravity="center_horizontal|center"/>
-        </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="2.0" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:id="@+id/textViewComments"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/textViewRating"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Leave Review"
+            android:id="@+id/reviewButton"
+            android:enabled="true"
+            android:gravity="center_horizontal|center"
+            android:layout_below="@+id/textViewComments"
+            />
     </LinearLayout>
 </ScrollView>

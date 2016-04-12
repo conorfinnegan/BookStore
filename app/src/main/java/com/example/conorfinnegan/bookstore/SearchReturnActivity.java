@@ -29,8 +29,6 @@ import java.util.Map;
 
 public class SearchReturnActivity extends AppCompatActivity {
 
-    String myJSON;
-
     JSONArray users = null;
 
     ArrayList<HashMap<String, String>> userList;

@@ -11,4 +11,6 @@
     <string name="title_activity_search_return">SearchReturnActivity</string>
     <string name="title_activity_customer_view_book">CustomerViewBook</string>
     <string name="title_activity_view_cart">ViewCart</string>
+    <string name="title_activity_view_book_cart">ViewBookCart</string>
+    <string name="title_activity_view_transactions_admin">ViewTransactionsAdmin</string>
 </resources>

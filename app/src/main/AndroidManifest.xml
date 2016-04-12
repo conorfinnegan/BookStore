@@ -65,6 +65,10 @@
         <activity
             android:name=".ViewCart"
             android:label="@string/title_activity_view_cart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewTransactionsAdmin"
+            android:label="@string/title_activity_view_transactions_admin"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
