@@ -41,12 +41,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
 
-
-//        LevelDropdown = (Spinner) findViewById(R.id.LevelSpinner);
-//        String[] levels = new String[]{"Division 1", "Division 2", "Division 3", "Division 4", "Division 5", "Division 6"};
-//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, levels);
-//        LevelDropdown.setAdapter(adapter2);
-
         btnRegister.setOnClickListener(this);
     }
 
