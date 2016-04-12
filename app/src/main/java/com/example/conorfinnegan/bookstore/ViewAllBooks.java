@@ -31,8 +31,6 @@ import java.util.Map;
 
 public class ViewAllBooks extends AppCompatActivity {
 
-    String myJSON;
-
     JSONArray users = null;
 
     ArrayList<HashMap<String, String>> userList;
@@ -131,8 +129,13 @@ public class ViewAllBooks extends AppCompatActivity {
                     Map<String, String> map = userList.get(position);
                     String bookId = map.get(KEY_ID);
 
+                    Intent intent = getIntent();
+
+                    String username = intent.getStringExtra("username");
+
                     Intent myIntent = new Intent(ViewAllBooks.this, ViewBook.class);
                     myIntent.putExtra("book_id", bookId);
+                    myIntent.putExtra("username", username);
                     startActivity(myIntent);
                 }
             });
