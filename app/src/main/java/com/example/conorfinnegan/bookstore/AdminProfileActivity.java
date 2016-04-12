@@ -10,13 +10,9 @@ import android.widget.TextView;
 public class AdminProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView textView;
     private Button btnLinkToAdd;
-    private Button btnLinkToDelete;
+    private Button btnLinkToViewTransactions;
     private Button btnLinkToViewAll;
-    private Button btnLinkToViewShortList;
     private Button btnLinkToLogout;
-    private Button btnLinkToSuggestedOpponents;
-    private Button btnLinkToViewRequests;
-    private Button btnLinkToViewFixtures;
 
     public static final String USER_NAME = "USER_NAME";
 
@@ -38,34 +34,18 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
         btnLinkToAdd = (Button) findViewById(R.id.AddBook);
 
         btnLinkToViewAll= (Button) findViewById(R.id.ViewAllBooks);
-//
-//        btnLinkToViewAll = (Button) findViewById(R.id.ViewAll);
-//
-//        btnLinkToViewShortList= (Button) findViewById(R.id.ViewShortList);
-//
-//        btnLinkToSuggestedOpponents = (Button) findViewById(R.id.SuggestedOpponents);
-//
-//        btnLinkToViewRequests = (Button) findViewById(R.id.IncomingRequests);
-//
+
+        btnLinkToViewTransactions = (Button) findViewById(R.id.ViewTransactions);
+
         btnLinkToLogout= (Button) findViewById(R.id.Logout);
-//
-//        btnLinkToViewFixtures = (Button) findViewById(R.id.ViewFixtures);
-//
+
         btnLinkToAdd.setOnClickListener(this);
 
         btnLinkToViewAll.setOnClickListener(this);
 
-//        btnLinkToViewAll.setOnClickListener(this);
-//
-//        btnLinkToViewShortList.setOnClickListener(this);
-//
-//        btnLinkToSuggestedOpponents.setOnClickListener(this);
-//
-//        btnLinkToViewRequests.setOnClickListener(this);
-//
+        btnLinkToViewTransactions.setOnClickListener(this);
+
         btnLinkToLogout.setOnClickListener(this);
-//
-//        btnLinkToViewFixtures.setOnClickListener(this);
     }
 
     @Override
@@ -79,28 +59,11 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(AdminProfileActivity.this,ViewAllBooks.class);
             startActivity(intent);
         }
-//        if(v == btnLinkToViewAll){
-//            Intent intent = new Intent(ProfileActivity.this,ViewAllActivity.class);
-//            intent.putExtra(USER_NAME, username);
-//            startActivity(intent);
-//        }
-//        if(v == btnLinkToViewShortList){
-//            Intent intent = new Intent(ProfileActivity.this,ViewShortlist.class);
-//            intent.putExtra("username", username);
-//            startActivity(intent);
-//        }
-//
-//        if(v == btnLinkToSuggestedOpponents){
-//            Intent intent = new Intent(ProfileActivity.this,SuggestedOpponents.class);
-//            intent.putExtra("username", username);
-//            startActivity(intent);
-//        }
-//
-//        if(v == btnLinkToViewRequests){
-//            Intent intent = new Intent(ProfileActivity.this,ViewRequests.class);
-//            intent.putExtra("username", username);
-//            startActivity(intent);
-//        }
+        if(v == btnLinkToViewTransactions){
+            Intent intent = new Intent(AdminProfileActivity.this,ViewTransactionsAdmin.class);
+            intent.putExtra(USER_NAME, username);
+            startActivity(intent);
+        }
 
         if(v == btnLinkToLogout){
             this.finish();
@@ -109,11 +72,5 @@ public class AdminProfileActivity extends AppCompatActivity implements View.OnCl
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-
-//        if(v == btnLinkToViewFixtures){
-//            Intent intent = new Intent(ProfileActivity.this,ViewFixtures.class);
-//            intent.putExtra("username", username);
-//            startActivity(intent);
-//        }
     }
 }

@@ -81,20 +81,20 @@
                 <!--android:height="120dp"/>-->
         <!--</TableRow>-->
 
-        <!--<TableRow-->
-            <!--android:id="@+id/tableRow5"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_below="@+id/tableRow4">-->
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:layout_below="@+id/tableRow4">
 
-            <!--<Button-->
-                <!--android:id="@+id/ViewFixtures"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="View Fixtures"-->
-                <!--android:height="80dp"/>-->
+            <Button
+                android:id="@+id/ViewTransactions"
+                android:layout_weight="1"
+                android:text="View Customer Transactions"
+                android:height="80dp"/>
 
-        <!--</TableRow>-->
+        </TableRow>
 
 
         <TableRow
